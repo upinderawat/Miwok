@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class WordAdapter extends ArrayAdapter<Word>{
     //provides the background color id for the different activities
     int mColorResourceId;
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer mMediaPlayer;
 
-    public WordAdapter(Context context, ArrayList<Word> words,int colorResourceId){
+      public WordAdapter(Context context, ArrayList<Word> words,int colorResourceId){
         super(context,0,words);//calls the super class constructor
         mColorResourceId = colorResourceId;
     }
@@ -39,14 +39,6 @@ public class WordAdapter extends ArrayAdapter<Word>{
 
         LinearLayout linearLayout = (LinearLayout) listItemView.findViewById(R.id.text_container);
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mediaPlayer = MediaPlayer.create(getContext(),currentWord.getmSongId());
-                mediaPlayer.start();
-            }
-        });
-
         miwokTextView.setText(currentWord.getmMiwokTranslation());
         engTextView.setText(currentWord.getmDefaultTranslation());
         int color = ContextCompat.getColor(getContext(), mColorResourceId);
@@ -63,4 +55,6 @@ public class WordAdapter extends ArrayAdapter<Word>{
 
         return listItemView;
     }
+
+
 }
